@@ -1,3 +1,6 @@
 [submodule "messaging"]
 	path = messaging
 	url = git@github.com:viLoqi/messaging.git
+[submodule "client"]
+	path = client
+	url = git@github.com:viLoqi/client.git
