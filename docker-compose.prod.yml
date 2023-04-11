@@ -13,3 +13,21 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  nginx:
+    container_name: nginx
+    image: jonasal/nginx-certbot
+    environment:
+      - CERTBOT_EMAIL=jiechenmc@gmail.com
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - nginx_secrets:/etc/letsencrypt
+      - ./user_conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - client
+      - messaging
+
+volumes:
+  nginx_secrets:
