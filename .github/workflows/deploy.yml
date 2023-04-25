@@ -33,7 +33,7 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}
 
       - name: Deploy site
-        run: ssh -f my-vm '~/redeploy-site.sh'
+        run: ssh my-vm 'nohup ~/redeploy-site.sh'
 
       - name: Discord Notification
-        run: ssh my-vm $'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '{{ json .}}' | jq  '"\(.Names) | \(.State) | \(.Status) | \(.Ports)"')\n$(curl ifconfig.me)'
+        run: ssh my-vm $'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '{{ json .}}' | jq -r '"\(.Names) | \(.State) | \(.Status) | \(.Ports)"')'
