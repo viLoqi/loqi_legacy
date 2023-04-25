@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy
+name: Run Server Deployment
 
 # Controls when the workflow will run
 on:
@@ -11,7 +11,7 @@ jobs:
   deploy:
     if: ${{ !github.event.pull_request }}
     runs-on: ubuntu-latest
-    name: "Deploy to DigitalOcean Droplet"
+    name: "Deploy to Department VM"
     steps:
       - name: Configure SSH
         run: |
