@@ -37,4 +37,4 @@ jobs:
 
       - name: Discord Notification
         # run: ssh my-vm 'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '{{ json .}}' | jq -r '"\(.Names) | \(.State) | \(.Status) | \(.Ports)"')"'
-        run: ssh my-vm 'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '{{ json .}}')\n🚀 Deployment Successful"'
+        run: ssh my-vm $'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '"'"'{{ json .}}'"'"')\nDeployment Successful to $SSH_IP"'
