@@ -36,5 +36,4 @@ jobs:
         run: ssh my-vm 'nohup ~/redeploy-site.sh'
 
       - name: Discord Notification
-        # run: ssh my-vm 'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '{{ json .}}' | jq -r '"\(.Names) | \(.State) | \(.Status) | \(.Ports)"')"'
-        run: ssh my-vm $'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=$(docker ps --format '"'"'{{ json .}}'"'"')\nDeployment Successful to $SSH_IP"'
+        ssh my-vm $'curl ${{ secrets.DISCORD_WEBHOOK }} -d "content=Deployment to $SSH_IP was successful!\n$(docker ps --format '"'"'{{ json .}}'"'"' | jq -r '"'"'"\(.Names) | \(.State) | \(.Status) | \(.Ports)"'"'"')"'
