@@ -19,14 +19,13 @@ services:
       - 8080:8080
     volumes:
       - ./messaging:/app
-
-  nginx:
-    container_name: nginx
-    image: nginx
-    ports:
-      - 80:80
-    volumes:
-      - ./.nginx_conf/dev_conf.d/:/etc/nginx/
-    depends_on:
-      - client
-      - messaging
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./.nginx_conf/dev_conf.d/:/etc/nginx/
+  #   depends_on:
+  #     - client
+  #     - messaging
