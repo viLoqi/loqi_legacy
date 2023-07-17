@@ -15,6 +15,16 @@ services:
     restart: always
     volumes:
       - ./messaging:/app
+
+  file:
+    container_name: file
+    build:
+      context: ./file
+      dockerfile: ./Dockerfile.dev
+    restart: always
+    volumes:
+      - ./file/app:/app
+
   nginx:
     container_name: nginx
     image: nginx
