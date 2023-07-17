@@ -4,3 +4,6 @@
 [submodule "client"]
 	path = client
 	url = git@github.com:viLoqi/client.git
+[submodule "file"]
+	path = file
+	url = git@github.com:viLoqi/file.git
