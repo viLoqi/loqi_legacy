@@ -15,6 +15,18 @@ services:
     restart: always
     volumes:
       - ./messaging:/app
+
+  file:
+    container_name: file
+    build:
+      context: ./file
+      dockerfile: ./Dockerfile.dev
+    restart: always
+    volumes:
+      - ./file/app:/code/app
+    environment:
+      - WATCHFILES_FORCE_POLLING=true
+
   nginx:
     container_name: nginx
     image: nginx
@@ -26,12 +38,14 @@ services:
       - client
       - messaging
   db:
+    container_name: postgres
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: example
 
   adminer:
+    container_name: adminer
     image: adminer
     restart: always
     ports:

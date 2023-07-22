@@ -4,3 +4,9 @@
 [submodule "client"]
 	path = client
 	url = git@github.com:viLoqi/client.git
+[submodule "file"]
+	path = file
+	url = git@github.com:viLoqi/file.git
+[submodule "cloud_functions"]
+	path = cloud_functions
+	url = git@github.com:viLoqi/cloud_functions.git
