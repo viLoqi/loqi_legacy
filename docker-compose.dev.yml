@@ -24,19 +24,16 @@ services:
     restart: always
     volumes:
       - ./file/app:/code/app
-    environment:
-      - WATCHFILES_FORCE_POLLING=true
 
-  nginx:
-    container_name: nginx
-    image: nginx
-    ports:
-      - 80:80
+  system:
+    container_name: system
+    build:
+      context: ./system
+      dockerfile: ./Dockerfile.dev
+    restart: always
     volumes:
-      - ./.nginx_conf/dev_conf.d/:/etc/nginx/
-    depends_on:
-      - client
-      - messaging
+      - ./system/app:/code/app
+
   db:
     container_name: postgres
     image: postgres
@@ -50,3 +47,18 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./.nginx_conf/dev_conf.d/:/etc/nginx/
+    depends_on:
+      - client
+      - messaging
+      - file
+      - system
+      - db
+      - adminer
