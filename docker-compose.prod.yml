@@ -10,6 +10,16 @@ services:
     build: ./messaging
     restart: always
 
+  file:
+  container_name: file
+  build: ./file
+  restart: always
+
+  system:
+    container_name: system
+    build: ./system
+    restart: always
+
   nginx:
     container_name: nginx
     image: jonasal/nginx-certbot
