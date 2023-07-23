@@ -11,9 +11,9 @@ services:
     restart: always
 
   file:
-  container_name: file
-  build: ./file
-  restart: always
+    container_name: file
+    build: ./file
+    restart: always
 
   system:
     container_name: system
